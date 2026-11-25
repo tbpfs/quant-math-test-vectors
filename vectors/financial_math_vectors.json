@@ -1,0 +1,50 @@
+{
+  "schema_version": "2026.11",
+  "spec_type": "educational-financial-math-test-vectors",
+  "disclaimer": "Strictly for deterministic financial mathematics education and formula verification. Not investment, tax, or retirement advice.",
+  "online_lab": "https://invest.ai-purplemaple.com/",
+  "vectors": [
+    {
+      "id": "position_size_1pct_lot1000",
+      "formula": "floor(floor(account * riskPct / (entry - stop)) / lot) * lot",
+      "inputs": { "account": 1000000, "risk_pct": 1.0, "entry": 100, "stop": 93, "lot": 1000 },
+      "expected": { "risk_amount": 10000, "max_shares": 1000 },
+      "tool_url": "https://invest.ai-purplemaple.com/en/tools/position-size/"
+    },
+    {
+      "id": "half_kelly_positive_edge",
+      "formula": "0.5 * (p - (1 - p) / b)",
+      "inputs": { "win_rate_pct": 55, "reward_risk_ratio": 1.5, "multiplier": 0.5 },
+      "expected": { "full_kelly_pct": 25.0, "applied_kelly_pct": 12.5 },
+      "tool_url": "https://invest.ai-purplemaple.com/en/tools/kelly-criterion/"
+    },
+    {
+      "id": "drawdown_recovery_50pct",
+      "formula": "d / (1 - d)",
+      "inputs": { "drawdown_pct": 50 },
+      "expected": { "required_gain_pct": 100.0 },
+      "tool_url": "https://invest.ai-purplemaple.com/en/tools/drawdown-recovery/"
+    },
+    {
+      "id": "coast_fire_pv_33y_5_5pct",
+      "formula": "(annualExpenses / swr) / (1 + r)^years",
+      "inputs": { "current_age": 32, "retire_age": 65, "annual_expenses": 48000, "swr_pct": 4.0, "real_return_pct": 5.5 },
+      "expected": { "full_fire_target": 1200000, "coast_fire_today": 205045.42 },
+      "tool_url": "https://invest.ai-purplemaple.com/en/tools/coast-fire-calculator/"
+    },
+    {
+      "id": "options_long_call_100sh",
+      "formula": "(max(0, S - K) - P) * 100 * N - fees",
+      "inputs": { "strike": 150, "premium": 4.5, "contracts": 1, "expiry_price": 162, "fee_per_contract": 0.65 },
+      "expected": { "breakeven": 154.51, "net_pnl": 749.35, "max_loss": -450.65 },
+      "tool_url": "https://invest.ai-purplemaple.com/en/tools/options-profit-calculator/"
+    },
+    {
+      "id": "options_covered_call_capped",
+      "formula": "(min(S, K) - basis + P) * 100 * N - fees",
+      "inputs": { "basis": 145, "strike": 150, "premium": 4.5, "contracts": 1, "expiry_price": 200, "fee_per_contract": 0 },
+      "expected": { "breakeven": 140.5, "max_profit": 950.0, "net_pnl": 950.0 },
+      "tool_url": "https://invest.ai-purplemaple.com/en/tools/options-profit-calculator/"
+    }
+  ]
+}
