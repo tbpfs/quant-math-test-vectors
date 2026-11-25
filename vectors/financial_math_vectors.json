@@ -35,6 +35,8 @@
     {
       "id": "options_long_call_100sh",
       "formula": "(max(0, S - K) - P) * 100 * N - fees",
+      "fee_basis": "entry_commission_per_contract",
+      "rounding_rule": "round_half_away_from_zero_2dp",
       "inputs": { "strike": 150, "premium": 4.5, "contracts": 1, "expiry_price": 162, "fee_per_contract": 0.65 },
       "expected": { "breakeven": 154.51, "net_pnl": 749.35, "max_loss": -450.65 },
       "tool_url": "https://invest.ai-purplemaple.com/en/tools/options-profit-calculator/"
